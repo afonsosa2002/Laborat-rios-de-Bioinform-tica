@@ -1,0 +1,8 @@
+from Bio import AlignIO
+Alinhamento = AlignIO.read("Alinhamento.txt", "fasta") 
+print (Alinhamento)
+print ("tam. alinhamento %i" % Alinhamento.get_alignment_length() )
+
+from Bio import Phylo
+tree = Phylo.read("Arvore.txt", "newick")
+print (tree)
