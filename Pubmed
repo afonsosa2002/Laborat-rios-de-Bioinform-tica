@@ -1,0 +1,23 @@
+from Bio import Entrez
+from Bio import Medline
+
+Base_de_Dados = input('Nome da Base de dados: ')
+Palavra_Chave = input('Palavra chave: ')
+Res_Max= int(input('Número de resultados maximos: '))
+email= input('email a inserir: ')
+Entrez.email= email
+handle=Entrez.esearch(db = Base_de_Dados, term=Palavra_Chave, retmax= Res_Max)
+record=Entrez.read(handle)
+handle.close()
+id_list= record['IdList']
+
+handle = Entrez.efetch(db=Base_de_Dados, id=id_list, rettype="medline", retmode="text")
+records = Medline.parse(handle)
+
+for record in records:
+    print(150*'-')
+    print("Título:", record.get("TI", "?"))
+    print("Autores:", record.get("AU", "?"))
+    print('Resumo:', record.get('AB', '?'))
+    print("Busca:", record.get("SO", "?"))
+    print(150*'-')
