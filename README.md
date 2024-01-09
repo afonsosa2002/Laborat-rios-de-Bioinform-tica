@@ -1,4 +1,4 @@
-### Mestrado em Bioinformática, ano lectivo '23-'24
+### Mestrado em Bioinformática, ano lectivo 23-24
 ## Laboratórios de Bioinformática
 
 #### Grupo 4:
