@@ -1,0 +1,38 @@
+from Bio import Entrez, SeqIO
+
+email = input("Email a inserir: ")
+gene_nome = input("Nome do gene: ")
+gene_id = input("ID do gene: ")
+
+Entrez.email = email
+
+def obter_sequencia(gene_id):
+    handle = Entrez.efetch(db="nucleotide", id=gene_id, rettype="gb", retmode="text")
+    record = SeqIO.read(handle, "genbank")
+    handle.close()
+    return record
+
+try:
+    sequencia_gene = obter_sequencia(gene_id)
+    
+    print(f"ID da Sequência: {sequencia_gene.id}")
+    print(f"Comprimento da Sequência: {len(sequencia_gene)} bases")
+except Exception as e:
+    print(f"Erro ao obter a sequência: {e}")
+
+def obter_anotacoes_nucleotide(gene_id):
+    handle = Entrez.efetch(db="nucleotide", id=gene_id, rettype="gb", retmode="text")
+    record = SeqIO.read(handle, "genbank")
+    handle.close()
+    return record
+
+try:
+    anotacoes_gene_nucleotide = obter_anotacoes_nucleotide(gene_id)
+    
+    print("\nAnotações:")
+    for feature in anotacoes_gene_nucleotide.features:
+        print(f"Tipo: {feature.type}")
+        print(f"Localização: {feature.location}")
+        print(f"Qualificadores: {feature.qualifiers}\n")
+except Exception as e:
+    print(f"Erro ao obter anotações: {e}")
