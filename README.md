@@ -14,7 +14,8 @@ O trabalho desenvolvido promove a utilização de ferramentas de bioinformática
 #### Genes:
 CTNNA3 <br>
 HLA-DRA <br>
-HMGA2|LLPH <br>
+HMGA2 <br>
+LLPH <br>
 
 
 #### Link para o Padlet
